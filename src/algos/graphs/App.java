@@ -4,22 +4,32 @@ public class App {
 
 
     public static void main(String[] args) {
-        BreadthFirstSearch.Node one = new BreadthFirstSearch.Node(1);
-        BreadthFirstSearch.Node two = new BreadthFirstSearch.Node(2);
-        BreadthFirstSearch.Node three = new BreadthFirstSearch.Node(3);
-        BreadthFirstSearch.Node four = new BreadthFirstSearch.Node(4);
-        BreadthFirstSearch.Node five = new BreadthFirstSearch.Node(5);
-        BreadthFirstSearch.Node six = new BreadthFirstSearch.Node(6);
+        Graph graph = getGraph();
+        BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
+        breadthFirstSearch.bfs(graph.getNodes()[2]);
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
+        depthFirstSearch.dfs(graph);
+    }
 
-        one.setNeighbors(new BreadthFirstSearch.Node[]{two, four});
-        two.setNeighbors(new BreadthFirstSearch.Node[]{five});
-        five.setNeighbors(new BreadthFirstSearch.Node[]{four});
-        four.setNeighbors(new BreadthFirstSearch.Node[]{two});
-        three.setNeighbors(new BreadthFirstSearch.Node[]{five, six});
-        six.setNeighbors(new BreadthFirstSearch.Node[]{six});
+    public static Graph getGraph() {
+        Node one = new Node(1);
+        Node two = new Node(2);
+        Node three = new Node(3);
+        Node four = new Node(4);
+        Node five = new Node(5);
+        Node six = new Node(6);
+
+        one.setNeighbors(new Node[]{two, four});
+        two.setNeighbors(new Node[]{five});
+        five.setNeighbors(new Node[]{four});
+        four.setNeighbors(new Node[]{two});
+        three.setNeighbors(new Node[]{five, six});
+        six.setNeighbors(new Node[]{six});
 
         BreadthFirstSearch breadthFirstSearch = new BreadthFirstSearch();
         breadthFirstSearch.bfs(three);
+        return new Graph(new Node[]{one, two, three, four, five, six});
     }
+
 
 }
