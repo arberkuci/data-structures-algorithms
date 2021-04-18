@@ -3,7 +3,7 @@ package algos.string;
 public class StringMatching {
 
     public boolean naiveStringMatching(String pattern, String text) {
-        if (pattern == null && text == null) return false;
+        if (pattern == null || text == null) return false;
         if (pattern.length() > text.length()) return false;
         int patternLength = pattern.length();
         int textLength = text.length();
@@ -15,9 +15,8 @@ public class StringMatching {
     }
 
     private boolean samePattern(char[] textChars, char[] patternChars, int shift) {
-        for (int i = 0; i < patternChars.length; i++) {
+        for (int i = 0; i < patternChars.length; i++)
             if (textChars[shift + i] != patternChars[i]) return false;
-        }
         return true;
     }
 
