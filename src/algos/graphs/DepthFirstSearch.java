@@ -9,7 +9,6 @@ public class DepthFirstSearch {
         Set<Node> visited = new HashSet<>();
         for (Node node : graph.getNodes()) {
             if (!visited.contains(node)) {
-                System.out.println("Starting top visiting: " + node.getValue());
                 visited.add(node);
                 visitDfs(node, visited);
             }
@@ -20,7 +19,6 @@ public class DepthFirstSearch {
         Node[] neighbors = node.getNeighbors();
         for (Node neighbor : neighbors) {
             if (!visited.contains(neighbor)) {
-                System.out.println("Visiting: " + neighbor.getValue());
                 visited.add(neighbor);
                 visitDfs(neighbor, visited);
             }

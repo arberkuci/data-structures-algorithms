@@ -28,4 +28,9 @@ class Node {
     public void setNeighbors(Node[] neighbors) {
         this.neighbors = neighbors;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(this.value);
+    }
 }
