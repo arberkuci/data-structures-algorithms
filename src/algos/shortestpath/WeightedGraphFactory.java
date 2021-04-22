@@ -25,4 +25,30 @@ public class WeightedGraphFactory {
         return graph;
     }
 
+    public static WeightedDirectedGraph getGraph() {
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+        Node node5 = new Node(5);
+
+        node1.addNeighbor(node2, 10);
+        node1.addNeighbor(node3, 5);
+
+        node2.addNeighbor(node3, 2);
+        node2.addNeighbor(node4, 1);
+
+        node3.addNeighbor(node4, 9);
+        node3.addNeighbor(node5, 2);
+        node3.addNeighbor(node2, 3);
+
+        node4.addNeighbor(node5, 4);
+
+        node5.addNeighbor(node1, 7);
+        node5.addNeighbor(node4, 6);
+
+        return new WeightedDirectedGraph(new Node[]{node1, node2, node3, node4, node5});
+    }
+
+
 }

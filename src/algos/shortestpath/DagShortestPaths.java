@@ -2,6 +2,10 @@ package algos.shortestpath;
 
 import java.util.*;
 
+/**
+ * Shortest path between a source node and every node that can be reached from source
+ * in a directed acyclic graph.
+ */
 public class DagShortestPaths {
 
     public Map<Node, Integer> dagShortestPath(WeightedDirectedGraph weightedDirectedGraph, Node source) {
@@ -23,8 +27,6 @@ public class DagShortestPaths {
         }
         return distance;
     }
-
-
 
     private void initialize(Map<Node, Integer> distance, LinkedList<Node> topologicalSortedNodes, Node source) {
         for (Node node : topologicalSortedNodes) {
