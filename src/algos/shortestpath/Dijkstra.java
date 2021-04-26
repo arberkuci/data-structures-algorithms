@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Dijkstra {
 
-    public Map<Node, Integer> dijkstra(WeightedDirectedGraph graph, Node source) {
+    public Map<Node, Integer> shortestPath(WeightedDirectedGraph graph, Node source) {
         Map<Node, Integer> distances = new HashMap<>();
         //Using a hash map because java does not offer an efficient and complete implementation of a heap ds.
         //Using a hash map, extract min is O(n) where n is the number of processed nodes.
@@ -52,9 +52,21 @@ public class Dijkstra {
     }
 
     public static void main(String[] args) {
-        Dijkstra dijkstra = new Dijkstra();
+        Dijkstra dijkstraObj = new Dijkstra();
         WeightedDirectedGraph graph = WeightedGraphFactory.getGraph();
-        System.out.println(dijkstra.dijkstra(graph, graph.getNodes()[0]));
+        Node source = graph.getNodes()[0];
+        Map<Node, Integer> shortestPaths = dijkstraObj.shortestPath(graph, source);
+        System.out.println(shortestPaths);
+        shortestPaths.forEach((node, distance) -> {
+            System.out.println("Distance from " + source + " to " + node + " is " + distance);
+            LinkedList<Node> path = new LinkedList<>();
+            path.addFirst(node);
+            while (node.getPredecessor() != null) {
+                path.addFirst(node.getPredecessor());
+                node = node.getPredecessor();
+            }
+            System.out.println("The path is: " + path);
+        });
     }
 
 }
