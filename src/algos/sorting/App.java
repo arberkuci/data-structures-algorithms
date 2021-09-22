@@ -20,6 +20,8 @@ public class App {
         System.out.println("========== Finished merge sort =========");
         System.out.println("========================================");
         System.out.println();
+        for (int i = 1; i < values.length; i++)
+            assert values[i] >= values[i - 1];
 
         values = new int[1000000];
         for (int i = 999999; i >= 0; i--) values[i] = random.nextInt();
@@ -35,6 +37,8 @@ public class App {
         System.out.println("========== Finished heap sort =========");
         System.out.println("=======================================");
         System.out.println();
+        for (int i = 1; i < values.length; i++)
+            assert values[i] >= values[i - 1];
 
         InsertionSort insertionSort = new InsertionSort();
         values = new int[1000000];
@@ -50,6 +54,26 @@ public class App {
         System.out.println("========== Finished insertion sort =========");
         System.out.println("============================================");
         System.out.println();
+        for (int i = 1; i < values.length; i++)
+            assert values[i] >= values[i - 1];
+
+
+        QuickSort quickSort = new QuickSort();
+        values = new int[1000000];
+        for (int i = 999999; i >= 0; i--) values[i] = random.nextInt();
+        System.out.println("============================================");
+        System.out.println("========== Starting quick sort =========");
+        System.out.println("============================================");
+        start = System.currentTimeMillis();
+        quickSort.quickSort(values);
+        finish = System.currentTimeMillis();
+        System.out.println(((finish - start) / 1000) + " seconds");
+        System.out.println("============================================");
+        System.out.println("========== Finished quick sort =========");
+        System.out.println("============================================");
+        System.out.println();
+        for (int i = 1; i < values.length; i++)
+            assert values[i] >= values[i - 1];
     }
 
 }
